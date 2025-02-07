@@ -12,3 +12,9 @@ func _process(delta: float) -> void:
 
 func _on_use() -> void:
 	print("CLIKNAWSZY")
+
+func _on_hover():
+	print("hover")
+	
+func _on_hover_end():
+	print("no hover")

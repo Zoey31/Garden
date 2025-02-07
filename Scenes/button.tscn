@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://6j3esslenvsg"]
 
-[ext_resource type="Script" path="res://scenes/clickable.gd" id="1_v51oh"]
+[ext_resource type="Script" path="res://src/scripts/ui/clickable.gd" id="1_4fdmq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dqj8n"]
 
@@ -14,7 +14,7 @@ transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_dqj8n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-script = ExtResource("1_v51oh")
+script = ExtResource("1_4fdmq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0639343, 0)
