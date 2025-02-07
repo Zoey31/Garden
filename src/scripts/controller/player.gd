@@ -16,7 +16,7 @@ const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
 #mouse ray max dist
-const RAY_LENGTH = 1
+const RAY_LENGTH = 1.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
