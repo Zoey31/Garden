@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://db2h3t17k37pe"]
 
-[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://Materials/Green.tres" id="1_o5nrg"]
-[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://Materials/Pink.tres" id="3_irgfk"]
-[ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://Materials/Red.tres" id="4_nuwel"]
-[ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://Scenes/player.tscn" id="5_7i1id"]
-[ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://Scenes/button.tscn" id="5_iflrl"]
-[ext_resource type="Material" uid="uid://p2nkjd3ge3qm" path="res://Materials/Blue.tres" id="5_te4rd"]
+[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_5ca0b"]
+[ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://materials/red.tres" id="2_sbd6g"]
+[ext_resource type="Material" uid="uid://p2nkjd3ge3qm" path="res://materials/blue.tres" id="3_ejpmm"]
+[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_l8wcs"]
+[ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://scenes/button.tscn" id="5_rr0ci"]
+[ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://scenes/player.tscn" id="6_8s5ye"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,7 +26,7 @@ glow_enabled = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.5653)
-material_override = ExtResource("3_irgfk")
+material_override = ExtResource("1_5ca0b")
 use_collision = true
 size = Vector3(52.4636, 5.83948, 1)
 
@@ -34,40 +34,40 @@ size = Vector3(52.4636, 5.83948, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.3824)
 use_collision = true
 size = Vector3(52.4636, 5.83948, 1)
-material = ExtResource("3_irgfk")
+material = ExtResource("1_5ca0b")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, 0.382374)
-material_override = ExtResource("3_irgfk")
+material_override = ExtResource("1_5ca0b")
 use_collision = true
 size = Vector3(60, 5.83948, 1)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 0, 0.382374)
-material_override = ExtResource("3_irgfk")
+material_override = ExtResource("1_5ca0b")
 use_collision = true
 size = Vector3(60, 5.83948, 1)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, -2, 0.382374)
-material_override = ExtResource("4_nuwel")
+material_override = ExtResource("2_sbd6g")
 use_collision = true
 size = Vector3(4, 5.83948, 4)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0, -5.61763)
-material_override = ExtResource("5_te4rd")
+material_override = ExtResource("3_ejpmm")
 use_collision = true
 size = Vector3(4, 5.83948, 4)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0, -12.6176)
-material_override = ExtResource("4_nuwel")
+material_override = ExtResource("2_sbd6g")
 use_collision = true
 size = Vector3(4, 8, 4)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map"]
-material_override = ExtResource("1_o5nrg")
+material_override = ExtResource("4_l8wcs")
 use_collision = true
 size = Vector3(52.2363, 0.002, 59.575)
 
@@ -78,7 +78,7 @@ environment = SubResource("Environment_g2h84")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Button" parent="Map" instance=ExtResource("5_iflrl")]
+[node name="Button" parent="Map" instance=ExtResource("5_rr0ci")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.72243, 1.49272, -4.5)
 
-[node name="Player" parent="." instance=ExtResource("5_7i1id")]
+[node name="Player" parent="." instance=ExtResource("6_8s5ye")]
