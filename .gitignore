@@ -32,7 +32,6 @@ export_presets.cfg
 
 # Konfiguracja specyficzna dla użytkownika
 *.import
-*.tres
 *.tscn.converted
 .editor_settings-3.tres
 config/
