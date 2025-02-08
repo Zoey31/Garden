@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://db2h3t17k37pe"]
+[gd_scene load_steps=12 format=3 uid="uid://db2h3t17k37pe"]
 
 [ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_u1sko"]
 [ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://materials/red.tres" id="2_p6bhm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_am1wd"]
 [ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://gameObjects/elements/button.tscn" id="5_6lykc"]
 [ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="6_bhrho"]
+[ext_resource type="Shader" path="res://shaders/pixelization_shader.gdshader" id="7_0lvk2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +20,20 @@ background_mode = 2
 sky = SubResource("Sky_f6bkd")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_por1n"]
+shader = ExtResource("7_0lvk2")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.2
+shader_parameter/pixelSize = 200.0
+shader_parameter/grainIntensity = 0.04
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.05
 
 [node name="World" type="Node3D"]
 
@@ -82,3 +97,14 @@ shadow_enabled = true
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.72243, 1.49272, -4.5)
 
 [node name="Player" parent="." instance=ExtResource("6_bhrho")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_por1n")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
