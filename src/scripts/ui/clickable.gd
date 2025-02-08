@@ -1,20 +1,26 @@
 extends Node3D
 
 @export var highlightColor: Color = Color.AQUA
-var lastColor: Color = Color.AQUA
+var lastColor: Color = Color.WHITE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$"/root/SceneManager".reload_scene_signal.connect(_reload)
+	$"/root/SceneManager".load_scene_signal.connect(_load)
 
+func _load(sourceScene, targetScene, animator):
+	print("From: " + sourceScene + " to: " + targetScene)
+	_set_color(Color.WHITE)
+	
+func _reload(animator):
+	_set_color(Color.WHITE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
-
 func _on_use() -> void:
-	print("CLIKNAWSZY")
+	$"/root/SceneManager".load_scene("res://scenes/main/world2.tscn")
 
 func _get_material() -> StandardMaterial3D: 
 	var meshInstance: MeshInstance3D = $".".get_parent()

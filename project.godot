@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="10-first Person Controller"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/main/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*res://src/lib/global/scene/sceneManager.gd"
 
 [display]
 

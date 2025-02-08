@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://6j3esslenvsg"]
+
+[ext_resource type="Script" path="res://src/scripts/ui/clickable.gd" id="1_4fdmq"]
+[ext_resource type="Material" uid="uid://idwghgcd7ni3" path="res://materials/standardMaterial.tres" id="1_vffnl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dqj8n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uibtj"]
+size = Vector3(1, 2.1131, 1)
+
+[node name="Button" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_dqj8n")
+surface_material_override/0 = ExtResource("1_vffnl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+script = ExtResource("1_4fdmq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0639343, 0)
+shape = SubResource("BoxShape3D_uibtj")
