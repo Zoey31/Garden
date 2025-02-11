@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv52vekeda5l8"]
+
+[ext_resource type="Script" path="res://src/lib/utils/local_billboard.gd" id="1_v1ia6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hwtxn"]
+viewport_path = NodePath("viewport")
+
+[node name="LocalBillboard" type="Sprite3D" node_paths=PackedStringArray("rich_text_label")]
+billboard = 1
+texture = SubResource("ViewportTexture_hwtxn")
+script = ExtResource("1_v1ia6")
+max_visible_lines = 3
+rich_text_label = NodePath("viewport/label")
+
+[node name="viewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(300, 200)
+
+[node name="label" type="RichTextLabel" parent="viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Test[/center]
+[left]a[/left]
+[right]b[/right]"
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+
+[node name="background" type="Sprite3D" parent="."]
+sorting_offset = -1.0
+billboard = 2

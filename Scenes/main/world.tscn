@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://db2h3t17k37pe"]
+[gd_scene load_steps=22 format=3 uid="uid://db2h3t17k37pe"]
 
 [ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_u1sko"]
 [ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://materials/red.tres" id="2_p6bhm"]
@@ -6,7 +6,11 @@
 [ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_am1wd"]
 [ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://gameObjects/elements/button.tscn" id="5_6lykc"]
 [ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="6_bhrho"]
+[ext_resource type="PackedScene" uid="uid://cv52vekeda5l8" path="res://gameObjects/utils/billboards/local_billboard.tscn" id="6_re8gv"]
+[ext_resource type="Script" path="res://src/scripts/scenes/world/detect_player.gd" id="6_vs4nd"]
 [ext_resource type="Shader" path="res://shaders/pixelization_shader.gdshader" id="7_0lvk2"]
+[ext_resource type="Script" path="res://src/lib/utils/billboard_text.gd" id="7_m8se2"]
+[ext_resource type="Script" path="res://src/lib/utils/billboard_elements.gd" id="8_eo27s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +24,40 @@ background_mode = 2
 sky = SubResource("Sky_f6bkd")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pcvqg"]
+viewport_path = NodePath("viewport")
+
+[sub_resource type="Resource" id="Resource_bkoja"]
+script = ExtResource("7_m8se2")
+time_per_letter = 0.0
+content = "Hello world"
+bold = false
+cursive = false
+color = Color(1, 1, 1, 1)
+phrase_break = 0.0
+align = 1
+
+[sub_resource type="Resource" id="Resource_dctl0"]
+script = ExtResource("8_eo27s")
+resources = Array[ExtResource("7_m8se2")]([SubResource("Resource_bkoja")])
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i6mj4"]
+viewport_path = NodePath("viewport")
+
+[sub_resource type="Resource" id="Resource_eia7e"]
+script = ExtResource("7_m8se2")
+time_per_letter = 0.0
+content = "Player 1"
+bold = false
+cursive = false
+color = Color(1, 1, 1, 1)
+phrase_break = 0.0
+align = 1
+
+[sub_resource type="Resource" id="Resource_7vldm"]
+script = ExtResource("8_eo27s")
+resources = Array[ExtResource("7_m8se2")]([SubResource("Resource_eia7e")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_por1n"]
 shader = ExtResource("7_0lvk2")
@@ -96,7 +134,28 @@ shadow_enabled = true
 [node name="Button" parent="Map" instance=ExtResource("5_6lykc")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.72243, 1.49272, -4.5)
 
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map" node_paths=PackedStringArray("player_node", "billboard")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.28575, 0.377424, -5.61763)
+material_override = ExtResource("3_mq2uk")
+use_collision = true
+script = ExtResource("6_vs4nd")
+player_node = NodePath("../../Player")
+detection_range = 4.0
+billboard = NodePath("LocalBillboard")
+
+[node name="LocalBillboard" parent="Map/CSGBox3D9" instance=ExtResource("6_re8gv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254761, 0)
+texture = SubResource("ViewportTexture_pcvqg")
+billboard_elements = SubResource("Resource_dctl0")
+start = false
+
 [node name="Player" parent="." instance=ExtResource("6_bhrho")]
+
+[node name="LocalBillboard" parent="Player" instance=ExtResource("6_re8gv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37848, 0)
+texture = SubResource("ViewportTexture_i6mj4")
+billboard_elements = SubResource("Resource_7vldm")
+start = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

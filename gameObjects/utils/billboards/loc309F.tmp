@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://cv52vekeda5l8"]
+
+[ext_resource type="Script" path="res://src/lib/utils/local_billboard.gd" id="1_v1ia6"]
+[ext_resource type="Script" path="res://src/lib/utils/billboard_text.gd" id="2_l0u2a"]
+[ext_resource type="Script" path="res://src/lib/utils/billboard_elements.gd" id="3_yfvsx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hwtxn"]
+viewport_path = NodePath("viewport")
+
+[sub_resource type="Resource" id="Resource_iil2q"]
+script = ExtResource("2_l0u2a")
+timePerLetter = 0.05
+content = "Test"
+bold = false
+cursive = false
+color = Color(1, 1, 1, 1)
+timeBreak = 2.0
+
+[sub_resource type="Resource" id="Resource_3kajc"]
+script = ExtResource("2_l0u2a")
+timePerLetter = 0.05
+content = " abc"
+bold = true
+cursive = false
+color = Color(1, 1, 1, 1)
+timeBreak = 0.0
+
+[sub_resource type="Resource" id="Resource_u5jau"]
+script = ExtResource("2_l0u2a")
+timePerLetter = 0.05
+content = "\\n"
+bold = false
+cursive = false
+color = Color(1, 1, 1, 1)
+timeBreak = 0.0
+
+[sub_resource type="Resource" id="Resource_lmg2c"]
+script = ExtResource("2_l0u2a")
+timePerLetter = 0.5
+content = "test2\\nab\\nc"
+bold = false
+cursive = false
+color = Color(1, 1, 1, 1)
+timeBreak = 0.0
+
+[sub_resource type="Resource" id="Resource_2cjsn"]
+script = ExtResource("3_yfvsx")
+resources = Array[ExtResource("2_l0u2a")]([SubResource("Resource_iil2q"), SubResource("Resource_3kajc"), SubResource("Resource_u5jau"), SubResource("Resource_lmg2c")])
+
+[node name="LocalBillboard" type="Sprite3D"]
+billboard = 2
+texture = SubResource("ViewportTexture_hwtxn")
+script = ExtResource("1_v1ia6")
+billboard_elements = SubResource("Resource_2cjsn")
+
+[node name="viewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(300, 200)
+
+[node name="label" type="RichTextLabel" parent="viewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[b]Hello guys[/b]
+Today we have new top 1
+Capibara godotciara
+Special mention
+Colin"
+
+[node name="background" type="Sprite3D" parent="."]
+sorting_offset = -1.0
+billboard = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.09984)
