@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cv52vekeda5l8"]
+[gd_scene load_steps=6 format=3 uid="uid://cv52vekeda5l8"]
 
 [ext_resource type="Script" path="res://src/lib/utils/local_billboard.gd" id="1_v1ia6"]
+[ext_resource type="Script" path="res://src/lib/utils/billboard_text.gd" id="2_7rvpn"]
+[ext_resource type="Script" path="res://src/lib/utils/billboard_elements.gd" id="3_16j4b"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hwtxn"]
 viewport_path = NodePath("viewport")
+
+[sub_resource type="Resource" id="Resource_0xv0u"]
+script = ExtResource("3_16j4b")
+resources = Array[ExtResource("2_7rvpn")]([])
 
 [node name="LocalBillboard" type="Sprite3D" node_paths=PackedStringArray("rich_text_label")]
 billboard = 1
 texture = SubResource("ViewportTexture_hwtxn")
 script = ExtResource("1_v1ia6")
+billboard_elements = SubResource("Resource_0xv0u")
 max_visible_lines = 3
 rich_text_label = NodePath("viewport/label")
 
@@ -23,12 +30,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]Test[/center]
-[left]a[/left]
-[right]b[/right]"
 shortcut_keys_enabled = false
 meta_underlined = false
 hint_underlined = false
+visible_characters = 0
 
 [node name="background" type="Sprite3D" parent="."]
 sorting_offset = -1.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6j3esslenvsg"]
+[gd_scene load_steps=6 format=3 uid="uid://6j3esslenvsg"]
 
 [ext_resource type="Script" path="res://src/scripts/ui/clickable.gd" id="1_4fdmq"]
 [ext_resource type="Material" uid="uid://idwghgcd7ni3" path="res://materials/standardMaterial.tres" id="1_vffnl"]
+[ext_resource type="Script" path="res://addons/elflings_library/src/highlight_system/outline_system.gd" id="2_246xw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dqj8n"]
 
@@ -10,13 +11,19 @@ size = Vector3(1, 2.1131, 1)
 
 [node name="Button" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("outline_target")]
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_dqj8n")
 surface_material_override/0 = ExtResource("1_vffnl")
+script = ExtResource("2_246xw")
+outline_color = Color(1, 0.992157, 0.815686, 1)
+outline_width = 8.0
+outline_target = NodePath(".")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" node_paths=PackedStringArray("node_with_outline")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09832, -1.27157e-05, 0.128822)
 script = ExtResource("1_4fdmq")
+node_with_outline = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0639343, 0)
