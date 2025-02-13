@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var node_with_outline: Node = null
+@export var target_listener: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,19 +18,23 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_use() -> void:
-	$"/root/SceneManager".load_scene("res://scenes/main/world2.tscn")
+	if not target_listener:
+		return
+	if not target_listener.has_signal("on_use"):
+		return
+	target_listener.on_use.emit()
 
 func _on_hover():
-	if not node_with_outline:
+	if not target_listener:
 		return
-	if not node_with_outline.has_signal("turn_on"):
+	if not target_listener.has_signal("on_hover"):
 		return
-	node_with_outline.turn_on.emit()
+	target_listener.on_hover.emit()
 
 func _on_hover_end():
-	if not node_with_outline:
+	if not target_listener:
 		return
-	if not node_with_outline.has_signal("turn_off"):
+	if not target_listener.has_signal("on_hover_end"):
 		return
-	node_with_outline.turn_off.emit()
+	target_listener.on_hover_end.emit()
 	

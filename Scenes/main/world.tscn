@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://db2h3t17k37pe"]
+[gd_scene load_steps=23 format=3 uid="uid://db2h3t17k37pe"]
 
 [ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_u1sko"]
 [ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://materials/red.tres" id="2_p6bhm"]
 [ext_resource type="Material" uid="uid://p2nkjd3ge3qm" path="res://materials/blue.tres" id="3_mq2uk"]
 [ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_am1wd"]
 [ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://gameObjects/elements/button.tscn" id="5_6lykc"]
+[ext_resource type="PackedScene" uid="uid://dd0rwvxx4w72s" path="res://scenes/main/world2.tscn" id="6_83xef"]
 [ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="6_bhrho"]
 [ext_resource type="PackedScene" uid="uid://cv52vekeda5l8" path="res://gameObjects/utils/billboards/local_billboard.tscn" id="6_re8gv"]
 [ext_resource type="Script" path="res://src/scripts/scenes/world/detect_player.gd" id="6_vs4nd"]
@@ -133,6 +134,7 @@ shadow_enabled = true
 
 [node name="Button" parent="Map" instance=ExtResource("5_6lykc")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.72243, 1.49272, -4.5)
+path_to_scene_to_load = ExtResource("6_83xef")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Map" node_paths=PackedStringArray("player_node", "billboard")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.28575, 0.377424, -5.61763)
