@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=3 uid="uid://7vho7sqos7i3"]
+
+[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_7filq"]
+[ext_resource type="Shader" path="res://addons/elflings_library/src/simply_water/shaders/water.gdshader" id="3_ufj23"]
+[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_0cyqs"]
+[ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="9_c8oj7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_f6bkd"]
+sky_material = SubResource("ProceduralSkyMaterial_5lq0h")
+
+[sub_resource type="Environment" id="Environment_g2h84"]
+background_mode = 2
+sky = SubResource("Sky_f6bkd")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_88gpn"]
+subdivide_width = 256
+subdivide_depth = 256
+orientation = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dekjw"]
+fractal_type = 2
+fractal_weighted_strength = 0.05
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ubb74"]
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_dekjw")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kqove"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uiv8n"]
+seamless = true
+as_normal_map = true
+normalize = false
+noise = SubResource("FastNoiseLite_kqove")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8mcxo"]
+noise_type = 3
+seed = 10
+fractal_type = 2
+fractal_weighted_strength = 0.23
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qlkci"]
+seamless = true
+as_normal_map = true
+normalize = false
+noise = SubResource("FastNoiseLite_8mcxo")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xlwks"]
+fractal_type = 2
+fractal_weighted_strength = 0.76
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6bu1k"]
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_xlwks")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nakxy"]
+render_priority = 0
+shader = ExtResource("3_ufj23")
+shader_parameter/depth_fade_distance = 0.038
+shader_parameter/absorbance = 51.69
+shader_parameter/shallow_color = Color(0.22, 0.66, 1, 1)
+shader_parameter/deep_color = Color(6.73831e-07, 0.237406, 0.429148, 1)
+shader_parameter/foam_amount = 0.05
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/roughness = 0.05
+shader_parameter/wave_scale = 10.0
+shader_parameter/height_scale = 0.2
+shader_parameter/wave_dir1 = Vector2(0, 5)
+shader_parameter/wave_dir2 = Vector2(2, 0)
+shader_parameter/wave_speed = 0.028
+shader_parameter/foam_noise = SubResource("NoiseTexture2D_ubb74")
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_6bu1k")
+shader_parameter/normal1 = SubResource("NoiseTexture2D_uiv8n")
+shader_parameter/normal2 = SubResource("NoiseTexture2D_qlkci")
+
+[node name="World2" type="Node3D"]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.5653)
+material_override = ExtResource("1_7filq")
+use_collision = true
+size = Vector3(52.464, 15, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.382)
+use_collision = true
+size = Vector3(52.464, 15, 1)
+material = ExtResource("1_7filq")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.0006, 0.0233016, 0.389342)
+material_override = ExtResource("1_7filq")
+use_collision = true
+size = Vector3(60, 15, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 0, 0.382374)
+material_override = ExtResource("1_7filq")
+use_collision = true
+size = Vector3(60, 15, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1, -5, 0)
+material_override = ExtResource("4_0cyqs")
+use_collision = true
+size = Vector3(22.036, 10, 59.575)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.793, -5, 0)
+material_override = ExtResource("4_0cyqs")
+use_collision = true
+size = Vector3(22.036, 10, 59.575)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map/CSGBox3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7185, -5, 0)
+material_override = ExtResource("4_0cyqs")
+use_collision = true
+size = Vector3(22.036, 10, 59.575)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_g2h84")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WaterPlane" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(9.99965, 0, -0.583981, 0, 1, 0, 0.0834258, 0, 69.9976, -0.15, -0.3, 0)
+mesh = SubResource("QuadMesh_88gpn")
+surface_material_override/0 = SubResource("ShaderMaterial_nakxy")
+
+[node name="Player" parent="." instance=ExtResource("9_c8oj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601, 0.05, -0.032)
