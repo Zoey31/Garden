@@ -1,8 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://7vho7sqos7i3"]
+[gd_scene load_steps=23 format=3 uid="uid://7vho7sqos7i3"]
 
 [ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_7filq"]
 [ext_resource type="Shader" path="res://addons/elflings_library/src/simply_water/shaders/water.gdshader" id="3_ufj23"]
 [ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_0cyqs"]
+[ext_resource type="Script" path="res://addons/elflings_library/src/simply_water/scripts/water.gd" id="4_c8coh"]
+[ext_resource type="Script" path="res://addons/elflings_library/src/simply_water/scripts/cube.gd" id="5_favm8"]
+[ext_resource type="Script" path="res://src/scripts/detection/detect_player_enter.gd" id="5_rtnoy"]
 [ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="9_c8oj7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
@@ -78,10 +81,17 @@ shader_parameter/height_scale = 0.2
 shader_parameter/wave_dir1 = Vector2(0, 5)
 shader_parameter/wave_dir2 = Vector2(2, 0)
 shader_parameter/wave_speed = 0.028
+shader_parameter/control_time = false
+shader_parameter/wave_time = 0.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_ubb74")
 shader_parameter/wave_texture = SubResource("NoiseTexture2D_6bu1k")
 shader_parameter/normal1 = SubResource("NoiseTexture2D_uiv8n")
 shader_parameter/normal2 = SubResource("NoiseTexture2D_qlkci")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_42jnc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wpy8"]
+size = Vector3(2, 1, 2)
 
 [node name="World2" type="Node3D"]
 
@@ -137,9 +147,47 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="WaterPlane" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.5, 0)
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 100, 0, -0.475036, 0)
 mesh = SubResource("QuadMesh_88gpn")
 surface_material_override/0 = SubResource("ShaderMaterial_nakxy")
+script = ExtResource("4_c8coh")
+
+[node name="Area3D" type="Area3D" parent="Map/WaterPlane"]
+script = ExtResource("5_rtnoy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/WaterPlane/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_42jnc")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Map" node_paths=PackedStringArray("water", "probeContainer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+script = ExtResource("5_favm8")
+water = NodePath("../WaterPlane")
+probeContainer = NodePath("CSGBox3D6/Probes")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.681426, 0)
+size = Vector3(2, 1, 2)
+
+[node name="Probes" type="Node3D" parent="Map/RigidBody3D/CSGBox3D6"]
+
+[node name="Marker3D" type="Marker3D" parent="Map/RigidBody3D/CSGBox3D6/Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, -1)
+
+[node name="Marker3D2" type="Marker3D" parent="Map/RigidBody3D/CSGBox3D6/Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 1)
+
+[node name="Marker3D3" type="Marker3D" parent="Map/RigidBody3D/CSGBox3D6/Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, 1)
+
+[node name="Marker3D4" type="Marker3D" parent="Map/RigidBody3D/CSGBox3D6/Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.5, -1)
+
+[node name="Marker3D5" type="Marker3D" parent="Map/RigidBody3D/CSGBox3D6/Probes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/RigidBody3D"]
+shape = SubResource("BoxShape3D_3wpy8")
 
 [node name="Player" parent="." instance=ExtResource("9_c8oj7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.601, 0.05, -0.032)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.601, 0.05, -0.032)

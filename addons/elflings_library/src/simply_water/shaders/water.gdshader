@@ -25,14 +25,22 @@ uniform vec2 wave_dir1 = vec2(1.0, 0.0);
 uniform sampler2D normal2;
 uniform vec2 wave_dir2 = vec2(0.0, 1.0);
 uniform float wave_speed : hint_range(0.0, 0.2) = 0.015;
+uniform bool control_time = false;
+uniform float wave_time = 0;
 
 vec3 screen(vec3 base, vec3 blend){
 	return 1.0 - (1.0 - base) * (1.0 - blend);
 }
 
 void vertex() {
+	float time_value = TIME;
+	if (control_time)
+	{
+		time_value = wave_time;
+	}
+	
 	uv_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	wave_height = texture(wave_texture, uv_world_pos.xz / wave_scale + TIME * wave_speed).r;
+	wave_height = texture(wave_texture, uv_world_pos.xz / wave_scale + time_value * wave_speed).r;
 	VERTEX.y += wave_height * height_scale;
 }
 
@@ -56,9 +64,15 @@ void fragment()
 
 	vec3 color_out = mix(deep_color, shallow_color, depth_fade_blend);
 	color_out = screen(color_out, foam);
+	
+	float time_value = TIME;
+	if (control_time)
+	{
+		time_value = wave_time;
+	}
 
-	vec2 normal_offset1 = (TIME * wave_dir1) * wave_speed;
-	vec2 normal_offset2 = (TIME * wave_dir2) * wave_speed;
+	vec2 normal_offset1 = (time_value * wave_dir1) * wave_speed;
+	vec2 normal_offset2 = (time_value * wave_dir2) * wave_speed;
 	vec3 normal_blend = mix(texture(normal1, uv_world_pos.xz / wave_scale + normal_offset1), texture(normal2, uv_world_pos.xz / wave_scale + normal_offset2), 0.5).rgb;
 	
 	ALBEDO = color_out;
