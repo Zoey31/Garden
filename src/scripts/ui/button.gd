@@ -1,4 +1,5 @@
 extends Node
+class_name ButtonHandler
 
 @export var node_with_outline: Node = null
 @export var path_to_scene_to_load: PackedScene = null

@@ -16,7 +16,7 @@ const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
 #mouse ray max dist
-const RAY_LENGTH = 1.5
+const RAY_LENGTH = 2.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
@@ -84,7 +84,7 @@ func use():
 		return
 	
 	var hit_collider = result["collider"]
-	
+
 	if hit_collider.has_method("_on_use"):
 		hit_collider._on_use()
 

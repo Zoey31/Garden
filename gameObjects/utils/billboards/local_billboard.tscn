@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cv52vekeda5l8"]
 
-[ext_resource type="Script" path="res://src/lib/utils/local_billboard.gd" id="1_v1ia6"]
-[ext_resource type="Script" path="res://src/lib/utils/billboard_text.gd" id="2_7rvpn"]
-[ext_resource type="Script" path="res://src/lib/utils/billboard_elements.gd" id="3_16j4b"]
+[ext_resource type="Script" uid="uid://ci7kf87mgv8jv" path="res://src/lib/utils/local_billboard.gd" id="1_v1ia6"]
+[ext_resource type="Script" uid="uid://dik68d034otl8" path="res://src/lib/utils/billboard_text.gd" id="2_7rvpn"]
+[ext_resource type="Script" uid="uid://bb61joby2uw7f" path="res://src/lib/utils/billboard_elements.gd" id="3_16j4b"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hwtxn"]
 viewport_path = NodePath("viewport")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdugpraryed2l"]
 
-[ext_resource type="Script" path="res://src/lib/global/scene/effects/fadeInOutEffect.gd" id="1_e6re8"]
+[ext_resource type="Script" uid="uid://bpsy51u6wg1p5" path="res://src/lib/global/scene/effects/fadeInOutEffect.gd" id="1_e6re8"]
 
 [sub_resource type="Animation" id="Animation_20iv4"]
 length = 0.001
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6ra13"]
 _data = {
-"RESET": SubResource("Animation_20iv4"),
-"fade": SubResource("Animation_fu18k")
+&"RESET": SubResource("Animation_20iv4"),
+&"fade": SubResource("Animation_fu18k")
 }
 
 [node name="FadeInOutEffect" type="Control"]

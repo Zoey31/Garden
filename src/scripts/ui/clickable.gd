@@ -1,4 +1,5 @@
 extends Node3D
+class_name Clickable
 
 @export var target_listener: Node = null
 
@@ -13,10 +14,6 @@ func _load(sourceScene, targetScene, animator):
 func _reload(animator):
 	_on_hover_end()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func _on_use() -> void:
 	if not target_listener:
 		return

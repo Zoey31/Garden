@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcb71wmif1s0n"]
 
-[ext_resource type="Script" path="res://src/scripts/controller/player.gd" id="1_y61qs"]
+[ext_resource type="Script" uid="uid://gj7fmw0ho1d7" path="res://src/scripts/controller/player.gd" id="1_y61qs"]
 [ext_resource type="Texture2D" uid="uid://dxhmood0fkku1" path="res://icon.svg" id="2_q4he4"]
-
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xc2g5"]
 

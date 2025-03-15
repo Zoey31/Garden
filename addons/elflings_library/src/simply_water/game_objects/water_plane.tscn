@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dh0vs4ujy67mt"]
 
-[ext_resource type="Shader" path="res://addons/elflings_library/src/simply_water/shaders/water.gdshader" id="1_spc4h"]
+[ext_resource type="Shader" uid="uid://ciibtefssvdge" path="res://addons/elflings_library/src/simply_water/shaders/water.gdshader" id="1_spc4h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_88gpn"]
 subdivide_width = 256
@@ -56,16 +56,18 @@ shader_parameter/shallow_color = Color(0.22, 0.66, 1, 1)
 shader_parameter/deep_color = Color(6.73831e-07, 0.237406, 0.429148, 1)
 shader_parameter/foam_amount = 0.05
 shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_noise = SubResource("NoiseTexture2D_ubb74")
 shader_parameter/roughness = 0.05
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_6bu1k")
 shader_parameter/wave_scale = 5.0
 shader_parameter/height_scale = 0.15
+shader_parameter/normal1 = SubResource("NoiseTexture2D_uiv8n")
 shader_parameter/wave_dir1 = Vector2(1, 0)
+shader_parameter/normal2 = SubResource("NoiseTexture2D_qlkci")
 shader_parameter/wave_dir2 = Vector2(0, 1)
 shader_parameter/wave_speed = 0.028
-shader_parameter/foam_noise = SubResource("NoiseTexture2D_ubb74")
-shader_parameter/wave_texture = SubResource("NoiseTexture2D_6bu1k")
-shader_parameter/normal1 = SubResource("NoiseTexture2D_uiv8n")
-shader_parameter/normal2 = SubResource("NoiseTexture2D_qlkci")
+shader_parameter/control_time = false
+shader_parameter/wave_time = 0.0
 
 [node name="WaterPlane" type="MeshInstance3D"]
 transform = Transform3D(0.999965, 0, -0.00834258, 0, 1, 0, 0.00834258, 0, 0.999965, 0, 0, 0)

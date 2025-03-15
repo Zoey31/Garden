@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://6j3esslenvsg"]
 
-[ext_resource type="Script" path="res://src/scripts/ui/clickable.gd" id="1_4fdmq"]
-[ext_resource type="Script" path="res://src/scripts/ui/button.gd" id="1_s5ct0"]
-[ext_resource type="Material" uid="uid://idwghgcd7ni3" path="res://materials/standardMaterial.tres" id="1_vffnl"]
-[ext_resource type="Script" path="res://addons/elflings_library/src/highlight_system/outline_system.gd" id="2_246xw"]
+[ext_resource type="Script" uid="uid://b41l2hh6tocab" path="res://src/scripts/ui/clickable.gd" id="1_4fdmq"]
+[ext_resource type="Script" uid="uid://b6j6crq2k66gh" path="res://src/scripts/ui/button.gd" id="1_s5ct0"]
+[ext_resource type="Material" uid="uid://idwghgcd7ni3" path="res://Materials/standardMaterial.tres" id="1_vffnl"]
+[ext_resource type="Script" uid="uid://biwinavjtvu1g" path="res://addons/elflings_library/src/highlight_system/outline_system.gd" id="2_246xw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dqj8n"]
 
@@ -11,7 +11,6 @@
 size = Vector3(1, 2.1131, 1)
 
 [node name="Button" type="Node3D" node_paths=PackedStringArray("node_with_outline")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438812, 0, 0.574936)
 script = ExtResource("1_s5ct0")
 node_with_outline = NodePath("MeshInstance3D")
 

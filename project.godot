@@ -12,12 +12,13 @@ config_version=5
 
 config/name="10-first Person Controller"
 run/main_scene="res://scenes/main/world.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SceneManager="*res://src/lib/global/scene/scene_manager.gd"
+Inventory="*res://src/scripts/global/singletons/inventory.gd"
 
 [display]
 
@@ -26,7 +27,7 @@ window/size/viewport_height=480
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/state_machine/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
