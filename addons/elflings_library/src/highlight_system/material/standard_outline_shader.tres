@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d2cigimm52fav"]
 
-[ext_resource type="Shader" path="res://addons/elflings_library/src/highlight_system/shaders/standard_outline_shader.gdshader" id="1_m2lde"]
+[ext_resource type="Shader" uid="uid://c4tjxhqkmlvai" path="res://addons/elflings_library/src/highlight_system/shaders/standard_outline_shader.gdshader" id="1_m2lde"]
 
 [resource]
 render_priority = 0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://dd0rwvxx4w72s"]
 
-[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://Materials/Pink.tres" id="1_4owg5"]
-[ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://Materials/Red.tres" id="2_sk4ly"]
-[ext_resource type="Material" uid="uid://p2nkjd3ge3qm" path="res://Materials/Blue.tres" id="3_tys1y"]
-[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://Materials/Green.tres" id="4_78ovh"]
+[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_4owg5"]
+[ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://materials/red.tres" id="2_sk4ly"]
+[ext_resource type="Material" uid="uid://p2nkjd3ge3qm" path="res://materials/blue.tres" id="3_tys1y"]
+[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_78ovh"]
 [ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://gameObjects/elements/button.tscn" id="5_7oiiw"]
 [ext_resource type="PackedScene" uid="uid://cv52vekeda5l8" path="res://gameObjects/utils/billboards/local_billboard.tscn" id="6_jh8qh"]
 [ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="6_lsvah"]
@@ -112,5 +112,5 @@ start = false
 [node name="Player" parent="." instance=ExtResource("6_lsvah")]
 
 [node name="Key" parent="." instance=ExtResource("10_hgae2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101, 2, -5.765)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.101, 2, -5.765)
 speed = 1.0

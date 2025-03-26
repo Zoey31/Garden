@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://7vho7sqos7i3"]
 
-[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://Materials/Pink.tres" id="1_7filq"]
+[ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_7filq"]
 [ext_resource type="Shader" uid="uid://ciibtefssvdge" path="res://addons/elflings_library/src/simply_water/shaders/water.gdshader" id="3_ufj23"]
-[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://Materials/Green.tres" id="4_0cyqs"]
+[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_0cyqs"]
 [ext_resource type="Script" uid="uid://iu3spejnycv3" path="res://addons/elflings_library/src/simply_water/scripts/water.gd" id="4_c8coh"]
 [ext_resource type="Script" uid="uid://byyhvjtqbh4te" path="res://addons/elflings_library/src/simply_water/scripts/cube.gd" id="5_favm8"]
 [ext_resource type="Script" uid="uid://gjwd223di1vt" path="res://src/scripts/detection/detect_player_enter.gd" id="5_rtnoy"]

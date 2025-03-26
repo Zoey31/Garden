@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgg85auctxcdx"]
+
+[ext_resource type="Texture2D" uid="uid://ck0ucroplxovi" path="res://assets/images/key_icon.png" id="1_n5kq0"]
+
+[node name="ItemIcon" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -608.0
+offset_bottom = -448.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n5kq0")
+expand_mode = 3
+stretch_mode = 4

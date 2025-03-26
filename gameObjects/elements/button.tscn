@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b41l2hh6tocab" path="res://src/scripts/ui/clickable.gd" id="1_4fdmq"]
 [ext_resource type="Script" uid="uid://b6j6crq2k66gh" path="res://src/scripts/ui/button.gd" id="1_s5ct0"]
-[ext_resource type="Material" uid="uid://idwghgcd7ni3" path="res://Materials/standardMaterial.tres" id="1_vffnl"]
+[ext_resource type="Material" uid="uid://idwghgcd7ni3" path="res://materials/standardMaterial.tres" id="1_vffnl"]
 [ext_resource type="Script" uid="uid://biwinavjtvu1g" path="res://addons/elflings_library/src/highlight_system/outline_system.gd" id="2_246xw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dqj8n"]
