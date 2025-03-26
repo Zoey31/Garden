@@ -1,14 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dd0rwvxx4w72s"]
+[gd_scene load_steps=12 format=3 uid="uid://dd0rwvxx4w72s"]
 
 [ext_resource type="Material" uid="uid://bi1h4xe7msjwi" path="res://materials/pink.tres" id="1_4owg5"]
 [ext_resource type="Material" uid="uid://b122sws3pt7w7" path="res://materials/red.tres" id="2_sk4ly"]
 [ext_resource type="Material" uid="uid://p2nkjd3ge3qm" path="res://materials/blue.tres" id="3_tys1y"]
 [ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://materials/green.tres" id="4_78ovh"]
-[ext_resource type="PackedScene" uid="uid://6j3esslenvsg" path="res://gameObjects/elements/button.tscn" id="5_7oiiw"]
-[ext_resource type="PackedScene" uid="uid://cv52vekeda5l8" path="res://gameObjects/utils/billboards/local_billboard.tscn" id="6_jh8qh"]
+[ext_resource type="PackedScene" uid="uid://ctv1htghtodup" path="res://gameObjects/elements/locked_button.tscn" id="5_a1ep0"]
+[ext_resource type="Resource" uid="uid://88j1o4143ndo" path="res://src/scripts/items/key_item.tres" id="6_kebim"]
 [ext_resource type="PackedScene" uid="uid://bcb71wmif1s0n" path="res://gameObjects/player/player.tscn" id="6_lsvah"]
-[ext_resource type="Script" uid="uid://dik68d034otl8" path="res://src/lib/utils/billboard_text.gd" id="7_3ta7a"]
-[ext_resource type="Script" uid="uid://bb61joby2uw7f" path="res://src/lib/utils/billboard_elements.gd" id="8_ix6y7"]
 [ext_resource type="PackedScene" uid="uid://bqrrq3pt5lwfn" path="res://gameObjects/elements/key.tscn" id="10_hgae2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
@@ -23,23 +21,6 @@ background_mode = 2
 sky = SubResource("Sky_f6bkd")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_keduy"]
-viewport_path = NodePath("viewport")
-
-[sub_resource type="Resource" id="Resource_2lmfg"]
-script = ExtResource("7_3ta7a")
-time_per_letter = 0.1
-content = "Got you!"
-bold = false
-cursive = false
-color = Color(1, 1, 1, 1)
-phrase_break = 0.0
-align = 1
-
-[sub_resource type="Resource" id="Resource_jpkry"]
-script = ExtResource("8_ix6y7")
-resources = Array[ExtResource("7_3ta7a")]([SubResource("Resource_2lmfg")])
 
 [node name="World2" type="Node3D"]
 
@@ -99,15 +80,9 @@ environment = SubResource("Environment_g2h84")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Button" parent="Map" node_paths=PackedStringArray("billboard") instance=ExtResource("5_7oiiw")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.72243, 1.49272, -4.5)
-billboard = NodePath("LocalBillboard")
-
-[node name="LocalBillboard" parent="Map/Button" instance=ExtResource("6_jh8qh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0142792, 0, 0)
-texture = SubResource("ViewportTexture_keduy")
-billboard_elements = SubResource("Resource_jpkry")
-start = false
+[node name="LockedButton" parent="Map" instance=ExtResource("5_a1ep0")]
+transform = Transform3D(1.31134e-07, -1, 3.82137e-15, 4.37114e-08, 1.91069e-15, -1, 1, 1.31134e-07, 4.37114e-08, 9.72243, 1.49272, -4.5)
+key_item = ExtResource("6_kebim")
 
 [node name="Player" parent="." instance=ExtResource("6_lsvah")]
 
