@@ -16,6 +16,7 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_h25ro")
 items_container = NodePath("MarginContainer/HBoxContainer/PanelContainer/MarginContainer/HBoxContainer")
+inventory_flow_animation = 3.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Inventory"]
 layout_mode = 1

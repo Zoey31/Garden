@@ -8,10 +8,10 @@ func _ready() -> void:
 	$"/root/SceneManager".reload_scene_signal.connect(_reload)
 	$"/root/SceneManager".load_scene_signal.connect(_load)
 
-func _load(sourceScene, targetScene, animator):
+func _load(_sourceScene, _targetScene, _animator):
 	_on_hover_end()
 	
-func _reload(animator):
+func _reload(_animator):
 	_on_hover_end()
 
 func _on_use() -> void:

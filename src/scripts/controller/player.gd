@@ -58,7 +58,7 @@ func _raycast_objects(ray_length):
 	
 	return result
 
-func highlight(delta):
+func highlight(_delta):
 	var newHighlightObject = _raycast_objects(RAY_LENGTH)
 
 	if newHighlightObject and highlightTarget == newHighlightObject["collider"]:
